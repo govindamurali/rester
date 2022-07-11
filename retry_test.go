@@ -30,7 +30,12 @@ func TestRequestWithExponentialRetry(t *testing.T) {
 	requestFunc := func() (*http.Response, error) {
 		return http.DefaultClient.Post("someurl", "application/json", bytes.NewBuffer(bty))
 	}
-	RequestWithBackoff(&Requester{requestFunc, "someurl", string(bty)})
+	requester := Requester{
+		requestFunc: requestFunc,
+		url:         "someurl",
+		body:        string(bty),
+	}
+	requester.WithExponentialRetry(15)
 
 	assert.Equal(t, count, 2)
 }
