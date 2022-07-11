@@ -42,4 +42,4 @@ go get github.com/govindamurali/rester
 ### Miscellaneous
 * You'll be able to get the response in the **response** variable & httpStatus in **httpResponse** variable
 * **customHeaders** are optional. Will use defaultHeaders when nil
-* customTransport can be used for tracking. eg. Use newrelic agent transport to get metrics tracked on newrelic. 
+* **customTransport** is optional. Will use defaultTransport when nil. Tip - Use newrelic agent transport to get metrics tracked on newrelic. 
